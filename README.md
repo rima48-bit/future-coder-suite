@@ -9,13 +9,7 @@ Focused on clean UI, better UX, and a modern developer-first experience.
 
 ##  Live Demo
 
-🔗 [Add your deployed link here (Vercel / Netlify)](https://letscodesubmission.vercel.app/)
-
----
-
-##  GitHub Repository
-
-🔗 [Add your GitHub repo link here](https://github.com/rima48-bit/future-coder-suite)
+🔗 [vercel-link](https://letscodesubmission.vercel.app/)
 
 ---
 
