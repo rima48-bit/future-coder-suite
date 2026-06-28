@@ -8,6 +8,7 @@ import {
   Briefcase,
   Calendar,
   Check,
+  ChevronDown,
   Code2,
   Compass,
   FileText,
@@ -23,6 +24,11 @@ import {
   Send,
   Sparkles,
   Star,
+  Target,
+  Building2,
+  Bell,
+  Crown,
+  MapPin,
   Trophy,
   Users,
   Zap,
@@ -50,12 +56,14 @@ function Index() {
       <Marquee />
       <Roadmap />
       <AITools />
-      <CommunityFeed />
-      <Events />
-      <ProjectShowcase />
+      <CompanyPrep />
       <LearningResources />
+      <Opportunities />
+      <StartupEcosystem />
       <Stats />
+      <SuccessStories />
       <Testimonials />
+      <JoinCommunity />
       <Partners />
       <FAQ />
       <FinalCTA />
@@ -66,57 +74,59 @@ function Index() {
 
 /* ---------------- NAV ---------------- */
 const NAV = [
-  { label: "Learn", items: ["PYQs", "Interview Questions", "Contests"] },
-  { label: "Explore", items: ["Feed", "Roadmaps", "Events"] },
-  { label: "Community", items: null },
-  { label: "AI Tools", items: null },
-  { label: "Jobs", items: null },
+  { label: "Learn", href: "#learning-resources", items: ["Roadmaps", "PYQs", "Interview Questions", "Contests"] },
+  { label: "AI Tools", href: "#ai-tools", items: ["Job Ready Score", "Mock Interview", "AI Resume Studio", "LinkedIn Optimizer", "AI Job Finder", "Cover Letter AI", "Job Tracker", "GitHub Optimizer"] },
+  { label: "Explore", href: "#startup-ecosystem", items: ["Startup Ecosystem", "Companies", "Roadmaps", "Events"] },
+  { label: "Community", href: "#join-community", items: null },
+  { label: "Jobs", href: "#opportunities", items: null },
 ];
 
 function Nav() {
   const [open, setOpen] = useState<string | null>(null);
   return (
     <nav className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <div className="flex items-center gap-10">
-          <a href="/" className="font-display text-xl font-bold tracking-tight text-brand-primary">
-            LET'S CODE
-          </a>
-          <div className="hidden items-center gap-7 lg:flex">
-            {NAV.map((n) => (
-              <div
-                key={n.label}
-                className="relative"
-                onMouseEnter={() => n.items && setOpen(n.label)}
-                onMouseLeave={() => setOpen(null)}
+      <div className="relative mx-auto grid h-16 max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-6">
+        <a href="/" className="font-display text-xl font-bold tracking-tight text-brand-primary">
+          LET'S CODE
+        </a>
+        <div className="hidden items-center justify-center gap-7 lg:flex">
+          {NAV.map((n) => (
+            <div
+              key={n.label}
+              className="relative"
+              onMouseEnter={() => n.items && setOpen(n.label)}
+              onMouseLeave={() => setOpen(null)}
+            >
+              <a
+                href={n.href}
+                className="inline-flex items-center gap-1 text-sm font-medium text-white/70 transition-colors hover:text-brand-primary"
               >
-                <button className="text-sm font-medium text-white/70 transition-colors hover:text-brand-primary">
-                  {n.label}
-                </button>
-                {n.items && open === n.label && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="absolute left-1/2 top-full -translate-x-1/2 pt-3"
-                  >
-                    <div className="min-w-[180px] rounded-xl border border-border bg-card p-2 shadow-2xl">
-                      {n.items.map((it) => (
-                        <a
-                          key={it}
-                          href="#"
-                          className="block rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-brand-primary"
-                        >
-                          {it}
-                        </a>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </div>
-            ))}
-          </div>
+                {n.label}
+                {n.items && <ChevronDown className="size-3.5 opacity-70" />}
+              </a>
+              {n.items && open === n.label && (
+                <motion.div
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3"
+                >
+                  <div className="min-w-[220px] rounded-xl border border-border bg-card p-2 shadow-2xl">
+                    {n.items.map((it) => (
+                      <a
+                        key={it}
+                        href="#"
+                        className="block rounded-lg px-3 py-2 text-sm text-white/80 hover:bg-white/5 hover:text-brand-primary"
+                      >
+                        {it}
+                      </a>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </div>
+          ))}
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center justify-end gap-3">
           <button className="hidden text-sm font-medium text-white/80 hover:text-brand-primary sm:block">
             Log in
           </button>
@@ -189,7 +199,7 @@ function Hero() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-10 flex flex-col gap-4 sm:flex-row"
         >
-          <button className="group flex items-center justify-center gap-2 rounded-xl bg-brand-primary px-8 py-5 text-base font-bold text-black transition-transform hover:scale-[1.02]">
+          <button className="group flex items-center justify-center gap-2 rounded-xl bg-brand-primary px-8 py-5 text-base font-bold text-black shadow-[0_0_0_0_rgba(217,255,0,0)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_40px_8px_rgba(217,255,0,0.55)]">
             Check Job Ready Score — Free
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
           </button>
