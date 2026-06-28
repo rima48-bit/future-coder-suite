@@ -61,7 +61,6 @@ function Index() {
       <Opportunities />
       <StartupEcosystem />
       <Stats />
-      <SuccessStories />
       <Testimonials />
       <JoinCommunity />
       <Partners />
@@ -209,7 +208,7 @@ function Hero() {
         </motion.div>
 
         <div className="mt-20 flex flex-wrap gap-3">
-          {["React.js", "System Design", "DevOps", "DSA", "Python", "Machine Learning", "Rust"].map(
+          {["Study Material", "Interview Questions", "Job Listings", "Events", "Notes", "Templates", "Challenges"].map(
             (t) => (
               <span
                 key={t}
