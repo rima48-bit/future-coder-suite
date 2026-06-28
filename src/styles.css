@@ -59,42 +59,61 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-brand-bg: var(--brand-bg);
+  --color-brand-surface: var(--brand-surface);
+  --color-brand-surface-2: var(--brand-surface-2);
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-ink-muted: var(--brand-ink-muted);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
 }
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  /* Brand palette — tech-industrial neo-grotesque */
+  --brand-bg: oklch(0.145 0.005 285);          /* #0A0A0B */
+  --brand-surface: oklch(0.215 0.005 285);     /* #1E1E20 */
+  --brand-surface-2: oklch(0.255 0.005 285);   /* #262626 */
+  --brand-primary: oklch(0.96 0.21 119);       /* #D9FF00 lime */
+  --brand-ink: oklch(1 0 0);
+  --brand-ink-muted: oklch(0.65 0 0);
+
+  --background: var(--brand-bg);
+  --foreground: oklch(1 0 0);
+  --card: var(--brand-surface);
+  --card-foreground: oklch(1 0 0);
+  --popover: var(--brand-surface);
+  --popover-foreground: oklch(1 0 0);
+  --primary: var(--brand-primary);
+  --primary-foreground: oklch(0.145 0 0);
+  --secondary: var(--brand-surface);
+  --secondary-foreground: oklch(1 0 0);
+  --muted: var(--brand-surface);
+  --muted-foreground: oklch(0.65 0 0);
+  --accent: var(--brand-primary);
+  --accent-foreground: oklch(0.145 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 10%);
+  --ring: var(--brand-primary);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --sidebar: var(--brand-surface);
+  --sidebar-foreground: oklch(1 0 0);
+  --sidebar-primary: var(--brand-primary);
+  --sidebar-primary-foreground: oklch(0.145 0 0);
+  --sidebar-accent: var(--brand-surface-2);
+  --sidebar-accent-foreground: oklch(1 0 0);
+  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-ring: var(--brand-primary);
+
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
 }
 
 .dark {
@@ -140,5 +159,51 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@utility grid-pattern {
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+@utility grid-pattern-fade {
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 40%, transparent 100%);
+          mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 40%, transparent 100%);
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@utility animate-marquee {
+  animation: marquee 35s linear infinite;
+}
+
+@keyframes marquee-slow {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@utility animate-marquee-slow {
+  animation: marquee-slow 60s linear infinite;
+}
+
+@keyframes grid-drift {
+  0% { background-position: 0 0; }
+  100% { background-position: 44px 44px; }
+}
+
+@utility animate-grid-drift {
+  animation: grid-drift 18s linear infinite;
 }
