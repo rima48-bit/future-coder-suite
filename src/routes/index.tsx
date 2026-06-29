@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -13,7 +14,6 @@ import {
   Compass,
   FileText,
   Github,
-  Heart,
   Linkedin,
   MessageCircle,
   MessageSquare,
@@ -32,6 +32,7 @@ import {
   Trophy,
   Users,
   Zap,
+  LayoutDashboard,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -132,6 +133,16 @@ function Nav() {
           <button className="rounded-full bg-white px-5 py-2 text-sm font-bold text-black transition-colors hover:bg-brand-primary">
             Sign Up
           </button>
+          <Link
+            to="/app/dashboard"
+            className="group flex items-center gap-2 rounded-full border border-brand-primary/40 bg-brand-primary/10 px-2 py-1 pr-3 transition-all hover:bg-brand-primary/20"
+            aria-label="Open dashboard"
+          >
+            <span className="grid size-8 place-items-center rounded-full bg-brand-primary font-display text-sm font-bold text-black">
+              VB
+            </span>
+            <LayoutDashboard className="size-4 text-brand-primary transition-transform group-hover:rotate-6" />
+          </Link>
         </div>
       </div>
     </nav>
@@ -198,7 +209,7 @@ function Hero() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-10 flex flex-col gap-4 sm:flex-row"
         >
-          <button className="group flex items-center justify-center gap-2 rounded-xl bg-brand-primary px-8 py-5 text-base font-bold text-black shadow-[0_0_0_0_rgba(217,255,0,0)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_40px_8px_rgba(217,255,0,0.55)]">
+          <button className="group flex items-center justify-center gap-2 rounded-xl bg-brand-primary px-8 py-5 text-base font-bold text-black shadow-[0_0_0_0_rgba(68,217,130,0)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_40px_8px_rgba(68,217,130,0.6)]">
             Check Job Ready Score — Free
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
           </button>
@@ -434,77 +445,6 @@ function CompanyPrep() {
               </button>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- SUCCESS STORIES (was Community Feed) ---------------- */
-const FEED = [
-  {
-    user: "Ananya R.",
-    role: "IIT Bombay · Y4",
-    text: "Just cleared my Stripe SWE final round 🎉 Mock interviews on Let's Code were the single biggest unlock.",
-    likes: 432,
-    comments: 58,
-  },
-  {
-    user: "Karthik S.",
-    role: "NIT Trichy · Y3",
-    text: "Shipped a Rust + WASM image filter. Source in the projects feed — would love some PRs.",
-    likes: 271,
-    comments: 34,
-  },
-  {
-    user: "Maya L.",
-    role: "Bootcamp Grad",
-    text: "Switched from non-CS to frontend in 9 months. The DSA roadmap kept me sane.",
-    likes: 612,
-    comments: 91,
-  },
-];
-
-function SuccessStories() {
-  return (
-    <section className="border-y border-border bg-brand-surface/40 py-32">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-16 flex items-end justify-between">
-          <div>
-            <span className="font-display mb-3 block text-sm font-bold uppercase tracking-widest text-brand-primary">
-              Student Success Stories
-            </span>
-            <h2 className="font-display text-4xl font-bold tracking-tighter md:text-6xl">
-              Receipts from the offer letters.
-            </h2>
-          </div>
-        </div>
-        <div className="grid gap-6 md:grid-cols-3">
-          {FEED.map((p) => (
-            <div
-              key={p.user}
-              className="flex flex-col rounded-2xl border border-border bg-brand-bg p-6"
-            >
-              <div className="flex items-center gap-3">
-                <div className="grid size-10 place-items-center rounded-full bg-brand-primary font-bold text-black">
-                  {p.user[0]}
-                </div>
-                <div>
-                  <div className="font-medium">{p.user}</div>
-                  <div className="text-xs text-white/40">{p.role}</div>
-                </div>
-              </div>
-              <p className="mt-5 flex-1 text-sm leading-relaxed text-white/75">{p.text}</p>
-              <div className="mt-6 flex items-center gap-5 text-xs text-white/40">
-                <span className="flex items-center gap-1.5">
-                  <Heart className="size-3.5" /> {p.likes}
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <MessageCircle className="size-3.5" /> {p.comments}
-                </span>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </section>
