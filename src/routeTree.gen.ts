@@ -9,264 +9,38 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AppIndexRouteImport } from './routes/app.index'
-import { Route as AppSandboxRouteImport } from './routes/app.sandbox'
-import { Route as AppResumeTemplatesRouteImport } from './routes/app.resume-templates'
-import { Route as AppPublishRouteImport } from './routes/app.publish'
-import { Route as AppProfileRouteImport } from './routes/app.profile'
-import { Route as AppPracticeRouteImport } from './routes/app.practice'
-import { Route as AppNetworkRouteImport } from './routes/app.network'
-import { Route as AppMyResumesRouteImport } from './routes/app.my-resumes'
-import { Route as AppMyPostsRouteImport } from './routes/app.my-posts'
-import { Route as AppJobTrackerRouteImport } from './routes/app.job-tracker'
-import { Route as AppJobFinderRouteImport } from './routes/app.job-finder'
-import { Route as AppInterviewExperiencesRouteImport } from './routes/app.interview-experiences'
-import { Route as AppGoodiesRouteImport } from './routes/app.goodies'
-import { Route as AppDsaChallengeRouteImport } from './routes/app.dsa-challenge'
-import { Route as AppCoursesRouteImport } from './routes/app.courses'
-import { Route as AppCheatsheetsRouteImport } from './routes/app.cheatsheets'
-import { Route as AppBookmarksRouteImport } from './routes/app.bookmarks'
 
-const AppRoute = AppRouteImport.update({
-  id: '/app',
-  path: '/app',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AppIndexRoute = AppIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppSandboxRoute = AppSandboxRouteImport.update({
-  id: '/sandbox',
-  path: '/sandbox',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppResumeTemplatesRoute = AppResumeTemplatesRouteImport.update({
-  id: '/resume-templates',
-  path: '/resume-templates',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppPublishRoute = AppPublishRouteImport.update({
-  id: '/publish',
-  path: '/publish',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppProfileRoute = AppProfileRouteImport.update({
-  id: '/profile',
-  path: '/profile',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppPracticeRoute = AppPracticeRouteImport.update({
-  id: '/practice',
-  path: '/practice',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppNetworkRoute = AppNetworkRouteImport.update({
-  id: '/network',
-  path: '/network',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppMyResumesRoute = AppMyResumesRouteImport.update({
-  id: '/my-resumes',
-  path: '/my-resumes',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppMyPostsRoute = AppMyPostsRouteImport.update({
-  id: '/my-posts',
-  path: '/my-posts',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppJobTrackerRoute = AppJobTrackerRouteImport.update({
-  id: '/job-tracker',
-  path: '/job-tracker',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppJobFinderRoute = AppJobFinderRouteImport.update({
-  id: '/job-finder',
-  path: '/job-finder',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppInterviewExperiencesRoute = AppInterviewExperiencesRouteImport.update({
-  id: '/interview-experiences',
-  path: '/interview-experiences',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppGoodiesRoute = AppGoodiesRouteImport.update({
-  id: '/goodies',
-  path: '/goodies',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppDsaChallengeRoute = AppDsaChallengeRouteImport.update({
-  id: '/dsa-challenge',
-  path: '/dsa-challenge',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppCoursesRoute = AppCoursesRouteImport.update({
-  id: '/courses',
-  path: '/courses',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppCheatsheetsRoute = AppCheatsheetsRouteImport.update({
-  id: '/cheatsheets',
-  path: '/cheatsheets',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppBookmarksRoute = AppBookmarksRouteImport.update({
-  id: '/bookmarks',
-  path: '/bookmarks',
-  getParentRoute: () => AppRoute,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/app': typeof AppRouteWithChildren
-  '/app/bookmarks': typeof AppBookmarksRoute
-  '/app/cheatsheets': typeof AppCheatsheetsRoute
-  '/app/courses': typeof AppCoursesRoute
-  '/app/dsa-challenge': typeof AppDsaChallengeRoute
-  '/app/goodies': typeof AppGoodiesRoute
-  '/app/interview-experiences': typeof AppInterviewExperiencesRoute
-  '/app/job-finder': typeof AppJobFinderRoute
-  '/app/job-tracker': typeof AppJobTrackerRoute
-  '/app/my-posts': typeof AppMyPostsRoute
-  '/app/my-resumes': typeof AppMyResumesRoute
-  '/app/network': typeof AppNetworkRoute
-  '/app/practice': typeof AppPracticeRoute
-  '/app/profile': typeof AppProfileRoute
-  '/app/publish': typeof AppPublishRoute
-  '/app/resume-templates': typeof AppResumeTemplatesRoute
-  '/app/sandbox': typeof AppSandboxRoute
-  '/app/': typeof AppIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/app/bookmarks': typeof AppBookmarksRoute
-  '/app/cheatsheets': typeof AppCheatsheetsRoute
-  '/app/courses': typeof AppCoursesRoute
-  '/app/dsa-challenge': typeof AppDsaChallengeRoute
-  '/app/goodies': typeof AppGoodiesRoute
-  '/app/interview-experiences': typeof AppInterviewExperiencesRoute
-  '/app/job-finder': typeof AppJobFinderRoute
-  '/app/job-tracker': typeof AppJobTrackerRoute
-  '/app/my-posts': typeof AppMyPostsRoute
-  '/app/my-resumes': typeof AppMyResumesRoute
-  '/app/network': typeof AppNetworkRoute
-  '/app/practice': typeof AppPracticeRoute
-  '/app/profile': typeof AppProfileRoute
-  '/app/publish': typeof AppPublishRoute
-  '/app/resume-templates': typeof AppResumeTemplatesRoute
-  '/app/sandbox': typeof AppSandboxRoute
-  '/app': typeof AppIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/app': typeof AppRouteWithChildren
-  '/app/bookmarks': typeof AppBookmarksRoute
-  '/app/cheatsheets': typeof AppCheatsheetsRoute
-  '/app/courses': typeof AppCoursesRoute
-  '/app/dsa-challenge': typeof AppDsaChallengeRoute
-  '/app/goodies': typeof AppGoodiesRoute
-  '/app/interview-experiences': typeof AppInterviewExperiencesRoute
-  '/app/job-finder': typeof AppJobFinderRoute
-  '/app/job-tracker': typeof AppJobTrackerRoute
-  '/app/my-posts': typeof AppMyPostsRoute
-  '/app/my-resumes': typeof AppMyResumesRoute
-  '/app/network': typeof AppNetworkRoute
-  '/app/practice': typeof AppPracticeRoute
-  '/app/profile': typeof AppProfileRoute
-  '/app/publish': typeof AppPublishRoute
-  '/app/resume-templates': typeof AppResumeTemplatesRoute
-  '/app/sandbox': typeof AppSandboxRoute
-  '/app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/app'
-    | '/app/bookmarks'
-    | '/app/cheatsheets'
-    | '/app/courses'
-    | '/app/dsa-challenge'
-    | '/app/goodies'
-    | '/app/interview-experiences'
-    | '/app/job-finder'
-    | '/app/job-tracker'
-    | '/app/my-posts'
-    | '/app/my-resumes'
-    | '/app/network'
-    | '/app/practice'
-    | '/app/profile'
-    | '/app/publish'
-    | '/app/resume-templates'
-    | '/app/sandbox'
-    | '/app/'
+  fullPaths: '/'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/app/bookmarks'
-    | '/app/cheatsheets'
-    | '/app/courses'
-    | '/app/dsa-challenge'
-    | '/app/goodies'
-    | '/app/interview-experiences'
-    | '/app/job-finder'
-    | '/app/job-tracker'
-    | '/app/my-posts'
-    | '/app/my-resumes'
-    | '/app/network'
-    | '/app/practice'
-    | '/app/profile'
-    | '/app/publish'
-    | '/app/resume-templates'
-    | '/app/sandbox'
-    | '/app'
-  id:
-    | '__root__'
-    | '/'
-    | '/app'
-    | '/app/bookmarks'
-    | '/app/cheatsheets'
-    | '/app/courses'
-    | '/app/dsa-challenge'
-    | '/app/goodies'
-    | '/app/interview-experiences'
-    | '/app/job-finder'
-    | '/app/job-tracker'
-    | '/app/my-posts'
-    | '/app/my-resumes'
-    | '/app/network'
-    | '/app/practice'
-    | '/app/profile'
-    | '/app/publish'
-    | '/app/resume-templates'
-    | '/app/sandbox'
-    | '/app/'
+  to: '/'
+  id: '__root__' | '/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AppRoute: typeof AppRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/app': {
-      id: '/app'
-      path: '/app'
-      fullPath: '/app'
-      preLoaderRoute: typeof AppRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -274,173 +48,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/app/': {
-      id: '/app/'
-      path: '/'
-      fullPath: '/app/'
-      preLoaderRoute: typeof AppIndexRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/sandbox': {
-      id: '/app/sandbox'
-      path: '/sandbox'
-      fullPath: '/app/sandbox'
-      preLoaderRoute: typeof AppSandboxRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/resume-templates': {
-      id: '/app/resume-templates'
-      path: '/resume-templates'
-      fullPath: '/app/resume-templates'
-      preLoaderRoute: typeof AppResumeTemplatesRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/publish': {
-      id: '/app/publish'
-      path: '/publish'
-      fullPath: '/app/publish'
-      preLoaderRoute: typeof AppPublishRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/profile': {
-      id: '/app/profile'
-      path: '/profile'
-      fullPath: '/app/profile'
-      preLoaderRoute: typeof AppProfileRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/practice': {
-      id: '/app/practice'
-      path: '/practice'
-      fullPath: '/app/practice'
-      preLoaderRoute: typeof AppPracticeRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/network': {
-      id: '/app/network'
-      path: '/network'
-      fullPath: '/app/network'
-      preLoaderRoute: typeof AppNetworkRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/my-resumes': {
-      id: '/app/my-resumes'
-      path: '/my-resumes'
-      fullPath: '/app/my-resumes'
-      preLoaderRoute: typeof AppMyResumesRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/my-posts': {
-      id: '/app/my-posts'
-      path: '/my-posts'
-      fullPath: '/app/my-posts'
-      preLoaderRoute: typeof AppMyPostsRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/job-tracker': {
-      id: '/app/job-tracker'
-      path: '/job-tracker'
-      fullPath: '/app/job-tracker'
-      preLoaderRoute: typeof AppJobTrackerRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/job-finder': {
-      id: '/app/job-finder'
-      path: '/job-finder'
-      fullPath: '/app/job-finder'
-      preLoaderRoute: typeof AppJobFinderRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/interview-experiences': {
-      id: '/app/interview-experiences'
-      path: '/interview-experiences'
-      fullPath: '/app/interview-experiences'
-      preLoaderRoute: typeof AppInterviewExperiencesRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/goodies': {
-      id: '/app/goodies'
-      path: '/goodies'
-      fullPath: '/app/goodies'
-      preLoaderRoute: typeof AppGoodiesRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/dsa-challenge': {
-      id: '/app/dsa-challenge'
-      path: '/dsa-challenge'
-      fullPath: '/app/dsa-challenge'
-      preLoaderRoute: typeof AppDsaChallengeRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/courses': {
-      id: '/app/courses'
-      path: '/courses'
-      fullPath: '/app/courses'
-      preLoaderRoute: typeof AppCoursesRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/cheatsheets': {
-      id: '/app/cheatsheets'
-      path: '/cheatsheets'
-      fullPath: '/app/cheatsheets'
-      preLoaderRoute: typeof AppCheatsheetsRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/bookmarks': {
-      id: '/app/bookmarks'
-      path: '/bookmarks'
-      fullPath: '/app/bookmarks'
-      preLoaderRoute: typeof AppBookmarksRouteImport
-      parentRoute: typeof AppRoute
-    }
   }
 }
 
-interface AppRouteChildren {
-  AppBookmarksRoute: typeof AppBookmarksRoute
-  AppCheatsheetsRoute: typeof AppCheatsheetsRoute
-  AppCoursesRoute: typeof AppCoursesRoute
-  AppDsaChallengeRoute: typeof AppDsaChallengeRoute
-  AppGoodiesRoute: typeof AppGoodiesRoute
-  AppInterviewExperiencesRoute: typeof AppInterviewExperiencesRoute
-  AppJobFinderRoute: typeof AppJobFinderRoute
-  AppJobTrackerRoute: typeof AppJobTrackerRoute
-  AppMyPostsRoute: typeof AppMyPostsRoute
-  AppMyResumesRoute: typeof AppMyResumesRoute
-  AppNetworkRoute: typeof AppNetworkRoute
-  AppPracticeRoute: typeof AppPracticeRoute
-  AppProfileRoute: typeof AppProfileRoute
-  AppPublishRoute: typeof AppPublishRoute
-  AppResumeTemplatesRoute: typeof AppResumeTemplatesRoute
-  AppSandboxRoute: typeof AppSandboxRoute
-  AppIndexRoute: typeof AppIndexRoute
-}
-
-const AppRouteChildren: AppRouteChildren = {
-  AppBookmarksRoute: AppBookmarksRoute,
-  AppCheatsheetsRoute: AppCheatsheetsRoute,
-  AppCoursesRoute: AppCoursesRoute,
-  AppDsaChallengeRoute: AppDsaChallengeRoute,
-  AppGoodiesRoute: AppGoodiesRoute,
-  AppInterviewExperiencesRoute: AppInterviewExperiencesRoute,
-  AppJobFinderRoute: AppJobFinderRoute,
-  AppJobTrackerRoute: AppJobTrackerRoute,
-  AppMyPostsRoute: AppMyPostsRoute,
-  AppMyResumesRoute: AppMyResumesRoute,
-  AppNetworkRoute: AppNetworkRoute,
-  AppPracticeRoute: AppPracticeRoute,
-  AppProfileRoute: AppProfileRoute,
-  AppPublishRoute: AppPublishRoute,
-  AppResumeTemplatesRoute: AppResumeTemplatesRoute,
-  AppSandboxRoute: AppSandboxRoute,
-  AppIndexRoute: AppIndexRoute,
-}
-
-const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AppRoute: AppRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
