@@ -13,6 +13,7 @@ import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppPublishRouteImport } from './routes/app.publish'
 import { Route as AppProfileRouteImport } from './routes/app.profile'
+import { Route as AppPracticeRouteImport } from './routes/app.practice'
 import { Route as AppMyPostsRouteImport } from './routes/app.my-posts'
 import { Route as AppInterviewExperiencesRouteImport } from './routes/app.interview-experiences'
 import { Route as AppGoodiesRouteImport } from './routes/app.goodies'
@@ -38,6 +39,11 @@ const AppPublishRoute = AppPublishRouteImport.update({
 const AppProfileRoute = AppProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPracticeRoute = AppPracticeRouteImport.update({
+  id: '/practice',
+  path: '/practice',
   getParentRoute: () => AppRoute,
 } as any)
 const AppMyPostsRoute = AppMyPostsRouteImport.update({
@@ -80,6 +86,7 @@ export interface FileRoutesByFullPath {
   '/app/goodies': typeof AppGoodiesRoute
   '/app/interview-experiences': typeof AppInterviewExperiencesRoute
   '/app/my-posts': typeof AppMyPostsRoute
+  '/app/practice': typeof AppPracticeRoute
   '/app/profile': typeof AppProfileRoute
   '/app/publish': typeof AppPublishRoute
 }
@@ -92,6 +99,7 @@ export interface FileRoutesByTo {
   '/app/goodies': typeof AppGoodiesRoute
   '/app/interview-experiences': typeof AppInterviewExperiencesRoute
   '/app/my-posts': typeof AppMyPostsRoute
+  '/app/practice': typeof AppPracticeRoute
   '/app/profile': typeof AppProfileRoute
   '/app/publish': typeof AppPublishRoute
 }
@@ -105,6 +113,7 @@ export interface FileRoutesById {
   '/app/goodies': typeof AppGoodiesRoute
   '/app/interview-experiences': typeof AppInterviewExperiencesRoute
   '/app/my-posts': typeof AppMyPostsRoute
+  '/app/practice': typeof AppPracticeRoute
   '/app/profile': typeof AppProfileRoute
   '/app/publish': typeof AppPublishRoute
 }
@@ -119,6 +128,7 @@ export interface FileRouteTypes {
     | '/app/goodies'
     | '/app/interview-experiences'
     | '/app/my-posts'
+    | '/app/practice'
     | '/app/profile'
     | '/app/publish'
   fileRoutesByTo: FileRoutesByTo
@@ -131,6 +141,7 @@ export interface FileRouteTypes {
     | '/app/goodies'
     | '/app/interview-experiences'
     | '/app/my-posts'
+    | '/app/practice'
     | '/app/profile'
     | '/app/publish'
   id:
@@ -143,6 +154,7 @@ export interface FileRouteTypes {
     | '/app/goodies'
     | '/app/interview-experiences'
     | '/app/my-posts'
+    | '/app/practice'
     | '/app/profile'
     | '/app/publish'
   fileRoutesById: FileRoutesById
@@ -180,6 +192,13 @@ declare module '@tanstack/react-router' {
       path: '/profile'
       fullPath: '/app/profile'
       preLoaderRoute: typeof AppProfileRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/practice': {
+      id: '/app/practice'
+      path: '/practice'
+      fullPath: '/app/practice'
+      preLoaderRoute: typeof AppPracticeRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/my-posts': {
@@ -234,6 +253,7 @@ interface AppRouteChildren {
   AppGoodiesRoute: typeof AppGoodiesRoute
   AppInterviewExperiencesRoute: typeof AppInterviewExperiencesRoute
   AppMyPostsRoute: typeof AppMyPostsRoute
+  AppPracticeRoute: typeof AppPracticeRoute
   AppProfileRoute: typeof AppProfileRoute
   AppPublishRoute: typeof AppPublishRoute
 }
@@ -245,6 +265,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppGoodiesRoute: AppGoodiesRoute,
   AppInterviewExperiencesRoute: AppInterviewExperiencesRoute,
   AppMyPostsRoute: AppMyPostsRoute,
+  AppPracticeRoute: AppPracticeRoute,
   AppProfileRoute: AppProfileRoute,
   AppPublishRoute: AppPublishRoute,
 }
