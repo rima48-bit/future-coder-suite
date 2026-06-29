@@ -1,6 +1,5 @@
 import { createFileRoute, Link, Outlet, useRouterState } from "@tanstack/react-router";
 import {
-  LayoutDashboard,
   User,
   FileText,
   MessageSquare,
@@ -28,7 +27,6 @@ const NAV_GROUPS = [
   {
     label: "General",
     items: [
-      { to: "/app/dashboard", label: "Dashboard", icon: LayoutDashboard },
       { to: "/app/profile", label: "Profile", icon: User },
       { to: "/app/my-posts", label: "My Posts", icon: FileText },
       { to: "/app/interview-experiences", label: "Interview Experiences", icon: MessageSquare },

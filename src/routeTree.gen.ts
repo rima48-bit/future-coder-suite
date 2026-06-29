@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as AppSandboxRouteImport } from './routes/app.sandbox'
 import { Route as AppResumeTemplatesRouteImport } from './routes/app.resume-templates'
 import { Route as AppPublishRouteImport } from './routes/app.publish'
@@ -24,7 +25,6 @@ import { Route as AppJobFinderRouteImport } from './routes/app.job-finder'
 import { Route as AppInterviewExperiencesRouteImport } from './routes/app.interview-experiences'
 import { Route as AppGoodiesRouteImport } from './routes/app.goodies'
 import { Route as AppDsaChallengeRouteImport } from './routes/app.dsa-challenge'
-import { Route as AppDashboardRouteImport } from './routes/app.dashboard'
 import { Route as AppCoursesRouteImport } from './routes/app.courses'
 import { Route as AppCheatsheetsRouteImport } from './routes/app.cheatsheets'
 import { Route as AppBookmarksRouteImport } from './routes/app.bookmarks'
@@ -38,6 +38,11 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRoute,
 } as any)
 const AppSandboxRoute = AppSandboxRouteImport.update({
   id: '/sandbox',
@@ -104,11 +109,6 @@ const AppDsaChallengeRoute = AppDsaChallengeRouteImport.update({
   path: '/dsa-challenge',
   getParentRoute: () => AppRoute,
 } as any)
-const AppDashboardRoute = AppDashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
-  getParentRoute: () => AppRoute,
-} as any)
 const AppCoursesRoute = AppCoursesRouteImport.update({
   id: '/courses',
   path: '/courses',
@@ -131,7 +131,6 @@ export interface FileRoutesByFullPath {
   '/app/bookmarks': typeof AppBookmarksRoute
   '/app/cheatsheets': typeof AppCheatsheetsRoute
   '/app/courses': typeof AppCoursesRoute
-  '/app/dashboard': typeof AppDashboardRoute
   '/app/dsa-challenge': typeof AppDsaChallengeRoute
   '/app/goodies': typeof AppGoodiesRoute
   '/app/interview-experiences': typeof AppInterviewExperiencesRoute
@@ -145,14 +144,13 @@ export interface FileRoutesByFullPath {
   '/app/publish': typeof AppPublishRoute
   '/app/resume-templates': typeof AppResumeTemplatesRoute
   '/app/sandbox': typeof AppSandboxRoute
+  '/app/': typeof AppIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/app': typeof AppRouteWithChildren
   '/app/bookmarks': typeof AppBookmarksRoute
   '/app/cheatsheets': typeof AppCheatsheetsRoute
   '/app/courses': typeof AppCoursesRoute
-  '/app/dashboard': typeof AppDashboardRoute
   '/app/dsa-challenge': typeof AppDsaChallengeRoute
   '/app/goodies': typeof AppGoodiesRoute
   '/app/interview-experiences': typeof AppInterviewExperiencesRoute
@@ -166,6 +164,7 @@ export interface FileRoutesByTo {
   '/app/publish': typeof AppPublishRoute
   '/app/resume-templates': typeof AppResumeTemplatesRoute
   '/app/sandbox': typeof AppSandboxRoute
+  '/app': typeof AppIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -174,7 +173,6 @@ export interface FileRoutesById {
   '/app/bookmarks': typeof AppBookmarksRoute
   '/app/cheatsheets': typeof AppCheatsheetsRoute
   '/app/courses': typeof AppCoursesRoute
-  '/app/dashboard': typeof AppDashboardRoute
   '/app/dsa-challenge': typeof AppDsaChallengeRoute
   '/app/goodies': typeof AppGoodiesRoute
   '/app/interview-experiences': typeof AppInterviewExperiencesRoute
@@ -188,6 +186,7 @@ export interface FileRoutesById {
   '/app/publish': typeof AppPublishRoute
   '/app/resume-templates': typeof AppResumeTemplatesRoute
   '/app/sandbox': typeof AppSandboxRoute
+  '/app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -197,7 +196,6 @@ export interface FileRouteTypes {
     | '/app/bookmarks'
     | '/app/cheatsheets'
     | '/app/courses'
-    | '/app/dashboard'
     | '/app/dsa-challenge'
     | '/app/goodies'
     | '/app/interview-experiences'
@@ -211,14 +209,13 @@ export interface FileRouteTypes {
     | '/app/publish'
     | '/app/resume-templates'
     | '/app/sandbox'
+    | '/app/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/app'
     | '/app/bookmarks'
     | '/app/cheatsheets'
     | '/app/courses'
-    | '/app/dashboard'
     | '/app/dsa-challenge'
     | '/app/goodies'
     | '/app/interview-experiences'
@@ -232,6 +229,7 @@ export interface FileRouteTypes {
     | '/app/publish'
     | '/app/resume-templates'
     | '/app/sandbox'
+    | '/app'
   id:
     | '__root__'
     | '/'
@@ -239,7 +237,6 @@ export interface FileRouteTypes {
     | '/app/bookmarks'
     | '/app/cheatsheets'
     | '/app/courses'
-    | '/app/dashboard'
     | '/app/dsa-challenge'
     | '/app/goodies'
     | '/app/interview-experiences'
@@ -253,6 +250,7 @@ export interface FileRouteTypes {
     | '/app/publish'
     | '/app/resume-templates'
     | '/app/sandbox'
+    | '/app/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -275,6 +273,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/app/': {
+      id: '/app/'
+      path: '/'
+      fullPath: '/app/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
     }
     '/app/sandbox': {
       id: '/app/sandbox'
@@ -367,13 +372,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppDsaChallengeRouteImport
       parentRoute: typeof AppRoute
     }
-    '/app/dashboard': {
-      id: '/app/dashboard'
-      path: '/dashboard'
-      fullPath: '/app/dashboard'
-      preLoaderRoute: typeof AppDashboardRouteImport
-      parentRoute: typeof AppRoute
-    }
     '/app/courses': {
       id: '/app/courses'
       path: '/courses'
@@ -402,7 +400,6 @@ interface AppRouteChildren {
   AppBookmarksRoute: typeof AppBookmarksRoute
   AppCheatsheetsRoute: typeof AppCheatsheetsRoute
   AppCoursesRoute: typeof AppCoursesRoute
-  AppDashboardRoute: typeof AppDashboardRoute
   AppDsaChallengeRoute: typeof AppDsaChallengeRoute
   AppGoodiesRoute: typeof AppGoodiesRoute
   AppInterviewExperiencesRoute: typeof AppInterviewExperiencesRoute
@@ -416,13 +413,13 @@ interface AppRouteChildren {
   AppPublishRoute: typeof AppPublishRoute
   AppResumeTemplatesRoute: typeof AppResumeTemplatesRoute
   AppSandboxRoute: typeof AppSandboxRoute
+  AppIndexRoute: typeof AppIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
   AppBookmarksRoute: AppBookmarksRoute,
   AppCheatsheetsRoute: AppCheatsheetsRoute,
   AppCoursesRoute: AppCoursesRoute,
-  AppDashboardRoute: AppDashboardRoute,
   AppDsaChallengeRoute: AppDsaChallengeRoute,
   AppGoodiesRoute: AppGoodiesRoute,
   AppInterviewExperiencesRoute: AppInterviewExperiencesRoute,
@@ -436,6 +433,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppPublishRoute: AppPublishRoute,
   AppResumeTemplatesRoute: AppResumeTemplatesRoute,
   AppSandboxRoute: AppSandboxRoute,
+  AppIndexRoute: AppIndexRoute,
 }
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
@@ -447,3 +445,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

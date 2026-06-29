@@ -32,7 +32,7 @@ import {
   Trophy,
   Users,
   Zap,
-  LayoutDashboard,
+  User,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -134,14 +134,14 @@ function Nav() {
             Sign Up
           </button>
           <Link
-            to="/app/dashboard"
+            to="/app/profile"
             className="group flex items-center gap-2 rounded-full border border-brand-primary/40 bg-brand-primary/10 px-2 py-1 pr-3 transition-all hover:bg-brand-primary/20"
-            aria-label="Open dashboard"
+            aria-label="Open profile"
           >
             <span className="grid size-8 place-items-center rounded-full bg-brand-primary font-display text-sm font-bold text-black">
               VB
             </span>
-            <LayoutDashboard className="size-4 text-brand-primary transition-transform group-hover:rotate-6" />
+            <User className="size-4 text-brand-primary transition-transform group-hover:rotate-6" />
           </Link>
         </div>
       </div>
