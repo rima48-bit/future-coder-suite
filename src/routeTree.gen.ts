@@ -14,6 +14,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppProfileRouteImport } from './routes/app.profile'
 import { Route as AppMyPostsRouteImport } from './routes/app.my-posts'
 import { Route as AppInterviewExperiencesRouteImport } from './routes/app.interview-experiences'
+import { Route as AppGoodiesRouteImport } from './routes/app.goodies'
 import { Route as AppDashboardRouteImport } from './routes/app.dashboard'
 import { Route as AppBookmarksRouteImport } from './routes/app.bookmarks'
 
@@ -42,6 +43,11 @@ const AppInterviewExperiencesRoute = AppInterviewExperiencesRouteImport.update({
   path: '/interview-experiences',
   getParentRoute: () => AppRoute,
 } as any)
+const AppGoodiesRoute = AppGoodiesRouteImport.update({
+  id: '/goodies',
+  path: '/goodies',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppDashboardRoute = AppDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/app': typeof AppRouteWithChildren
   '/app/bookmarks': typeof AppBookmarksRoute
   '/app/dashboard': typeof AppDashboardRoute
+  '/app/goodies': typeof AppGoodiesRoute
   '/app/interview-experiences': typeof AppInterviewExperiencesRoute
   '/app/my-posts': typeof AppMyPostsRoute
   '/app/profile': typeof AppProfileRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/app': typeof AppRouteWithChildren
   '/app/bookmarks': typeof AppBookmarksRoute
   '/app/dashboard': typeof AppDashboardRoute
+  '/app/goodies': typeof AppGoodiesRoute
   '/app/interview-experiences': typeof AppInterviewExperiencesRoute
   '/app/my-posts': typeof AppMyPostsRoute
   '/app/profile': typeof AppProfileRoute
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/app': typeof AppRouteWithChildren
   '/app/bookmarks': typeof AppBookmarksRoute
   '/app/dashboard': typeof AppDashboardRoute
+  '/app/goodies': typeof AppGoodiesRoute
   '/app/interview-experiences': typeof AppInterviewExperiencesRoute
   '/app/my-posts': typeof AppMyPostsRoute
   '/app/profile': typeof AppProfileRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/app'
     | '/app/bookmarks'
     | '/app/dashboard'
+    | '/app/goodies'
     | '/app/interview-experiences'
     | '/app/my-posts'
     | '/app/profile'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/app'
     | '/app/bookmarks'
     | '/app/dashboard'
+    | '/app/goodies'
     | '/app/interview-experiences'
     | '/app/my-posts'
     | '/app/profile'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/app'
     | '/app/bookmarks'
     | '/app/dashboard'
+    | '/app/goodies'
     | '/app/interview-experiences'
     | '/app/my-posts'
     | '/app/profile'
@@ -153,6 +165,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppInterviewExperiencesRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/goodies': {
+      id: '/app/goodies'
+      path: '/goodies'
+      fullPath: '/app/goodies'
+      preLoaderRoute: typeof AppGoodiesRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/dashboard': {
       id: '/app/dashboard'
       path: '/dashboard'
@@ -173,6 +192,7 @@ declare module '@tanstack/react-router' {
 interface AppRouteChildren {
   AppBookmarksRoute: typeof AppBookmarksRoute
   AppDashboardRoute: typeof AppDashboardRoute
+  AppGoodiesRoute: typeof AppGoodiesRoute
   AppInterviewExperiencesRoute: typeof AppInterviewExperiencesRoute
   AppMyPostsRoute: typeof AppMyPostsRoute
   AppProfileRoute: typeof AppProfileRoute
@@ -181,6 +201,7 @@ interface AppRouteChildren {
 const AppRouteChildren: AppRouteChildren = {
   AppBookmarksRoute: AppBookmarksRoute,
   AppDashboardRoute: AppDashboardRoute,
+  AppGoodiesRoute: AppGoodiesRoute,
   AppInterviewExperiencesRoute: AppInterviewExperiencesRoute,
   AppMyPostsRoute: AppMyPostsRoute,
   AppProfileRoute: AppProfileRoute,
