@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppSandboxRouteImport } from './routes/app.sandbox'
 import { Route as AppPublishRouteImport } from './routes/app.publish'
 import { Route as AppProfileRouteImport } from './routes/app.profile'
 import { Route as AppPracticeRouteImport } from './routes/app.practice'
@@ -31,6 +32,11 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AppSandboxRoute = AppSandboxRouteImport.update({
+  id: '/sandbox',
+  path: '/sandbox',
+  getParentRoute: () => AppRoute,
 } as any)
 const AppPublishRoute = AppPublishRouteImport.update({
   id: '/publish',
@@ -96,6 +102,7 @@ export interface FileRoutesByFullPath {
   '/app/practice': typeof AppPracticeRoute
   '/app/profile': typeof AppProfileRoute
   '/app/publish': typeof AppPublishRoute
+  '/app/sandbox': typeof AppSandboxRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -110,6 +117,7 @@ export interface FileRoutesByTo {
   '/app/practice': typeof AppPracticeRoute
   '/app/profile': typeof AppProfileRoute
   '/app/publish': typeof AppPublishRoute
+  '/app/sandbox': typeof AppSandboxRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -125,6 +133,7 @@ export interface FileRoutesById {
   '/app/practice': typeof AppPracticeRoute
   '/app/profile': typeof AppProfileRoute
   '/app/publish': typeof AppPublishRoute
+  '/app/sandbox': typeof AppSandboxRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -141,6 +150,7 @@ export interface FileRouteTypes {
     | '/app/practice'
     | '/app/profile'
     | '/app/publish'
+    | '/app/sandbox'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -155,6 +165,7 @@ export interface FileRouteTypes {
     | '/app/practice'
     | '/app/profile'
     | '/app/publish'
+    | '/app/sandbox'
   id:
     | '__root__'
     | '/'
@@ -169,6 +180,7 @@ export interface FileRouteTypes {
     | '/app/practice'
     | '/app/profile'
     | '/app/publish'
+    | '/app/sandbox'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -191,6 +203,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/app/sandbox': {
+      id: '/app/sandbox'
+      path: '/sandbox'
+      fullPath: '/app/sandbox'
+      preLoaderRoute: typeof AppSandboxRouteImport
+      parentRoute: typeof AppRoute
     }
     '/app/publish': {
       id: '/app/publish'
@@ -276,6 +295,7 @@ interface AppRouteChildren {
   AppPracticeRoute: typeof AppPracticeRoute
   AppProfileRoute: typeof AppProfileRoute
   AppPublishRoute: typeof AppPublishRoute
+  AppSandboxRoute: typeof AppSandboxRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
@@ -289,6 +309,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppPracticeRoute: AppPracticeRoute,
   AppProfileRoute: AppProfileRoute,
   AppPublishRoute: AppPublishRoute,
+  AppSandboxRoute: AppSandboxRoute,
 }
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
