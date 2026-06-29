@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -13,7 +14,6 @@ import {
   Compass,
   FileText,
   Github,
-  Heart,
   Linkedin,
   MessageCircle,
   MessageSquare,
@@ -32,6 +32,7 @@ import {
   Trophy,
   Users,
   Zap,
+  LayoutDashboard,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -132,6 +133,16 @@ function Nav() {
           <button className="rounded-full bg-white px-5 py-2 text-sm font-bold text-black transition-colors hover:bg-brand-primary">
             Sign Up
           </button>
+          <Link
+            to="/app/dashboard"
+            className="group flex items-center gap-2 rounded-full border border-brand-primary/40 bg-brand-primary/10 px-2 py-1 pr-3 transition-all hover:bg-brand-primary/20"
+            aria-label="Open dashboard"
+          >
+            <span className="grid size-8 place-items-center rounded-full bg-brand-primary font-display text-sm font-bold text-black">
+              VB
+            </span>
+            <LayoutDashboard className="size-4 text-brand-primary transition-transform group-hover:rotate-6" />
+          </Link>
         </div>
       </div>
     </nav>
@@ -198,7 +209,7 @@ function Hero() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-10 flex flex-col gap-4 sm:flex-row"
         >
-          <button className="group flex items-center justify-center gap-2 rounded-xl bg-brand-primary px-8 py-5 text-base font-bold text-black shadow-[0_0_0_0_rgba(217,255,0,0)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_40px_8px_rgba(217,255,0,0.55)]">
+          <button className="group flex items-center justify-center gap-2 rounded-xl bg-brand-primary px-8 py-5 text-base font-bold text-black shadow-[0_0_0_0_rgba(68,217,130,0)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_40px_8px_rgba(68,217,130,0.6)]">
             Check Job Ready Score — Free
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
           </button>
