@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppPublishRouteImport } from './routes/app.publish'
 import { Route as AppProfileRouteImport } from './routes/app.profile'
 import { Route as AppMyPostsRouteImport } from './routes/app.my-posts'
 import { Route as AppInterviewExperiencesRouteImport } from './routes/app.interview-experiences'
@@ -27,6 +28,11 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AppPublishRoute = AppPublishRouteImport.update({
+  id: '/publish',
+  path: '/publish',
+  getParentRoute: () => AppRoute,
 } as any)
 const AppProfileRoute = AppProfileRouteImport.update({
   id: '/profile',
@@ -68,6 +74,7 @@ export interface FileRoutesByFullPath {
   '/app/interview-experiences': typeof AppInterviewExperiencesRoute
   '/app/my-posts': typeof AppMyPostsRoute
   '/app/profile': typeof AppProfileRoute
+  '/app/publish': typeof AppPublishRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -78,6 +85,7 @@ export interface FileRoutesByTo {
   '/app/interview-experiences': typeof AppInterviewExperiencesRoute
   '/app/my-posts': typeof AppMyPostsRoute
   '/app/profile': typeof AppProfileRoute
+  '/app/publish': typeof AppPublishRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -89,6 +97,7 @@ export interface FileRoutesById {
   '/app/interview-experiences': typeof AppInterviewExperiencesRoute
   '/app/my-posts': typeof AppMyPostsRoute
   '/app/profile': typeof AppProfileRoute
+  '/app/publish': typeof AppPublishRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +110,7 @@ export interface FileRouteTypes {
     | '/app/interview-experiences'
     | '/app/my-posts'
     | '/app/profile'
+    | '/app/publish'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +121,7 @@ export interface FileRouteTypes {
     | '/app/interview-experiences'
     | '/app/my-posts'
     | '/app/profile'
+    | '/app/publish'
   id:
     | '__root__'
     | '/'
@@ -121,6 +132,7 @@ export interface FileRouteTypes {
     | '/app/interview-experiences'
     | '/app/my-posts'
     | '/app/profile'
+    | '/app/publish'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -143,6 +155,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/app/publish': {
+      id: '/app/publish'
+      path: '/publish'
+      fullPath: '/app/publish'
+      preLoaderRoute: typeof AppPublishRouteImport
+      parentRoute: typeof AppRoute
     }
     '/app/profile': {
       id: '/app/profile'
@@ -196,6 +215,7 @@ interface AppRouteChildren {
   AppInterviewExperiencesRoute: typeof AppInterviewExperiencesRoute
   AppMyPostsRoute: typeof AppMyPostsRoute
   AppProfileRoute: typeof AppProfileRoute
+  AppPublishRoute: typeof AppPublishRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
@@ -205,6 +225,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppInterviewExperiencesRoute: AppInterviewExperiencesRoute,
   AppMyPostsRoute: AppMyPostsRoute,
   AppProfileRoute: AppProfileRoute,
+  AppPublishRoute: AppPublishRoute,
 }
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
