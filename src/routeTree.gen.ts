@@ -23,6 +23,7 @@ import { Route as AppJobTrackerRouteImport } from './routes/app.job-tracker'
 import { Route as AppJobFinderRouteImport } from './routes/app.job-finder'
 import { Route as AppInterviewExperiencesRouteImport } from './routes/app.interview-experiences'
 import { Route as AppGoodiesRouteImport } from './routes/app.goodies'
+import { Route as AppDsaChallengeRouteImport } from './routes/app.dsa-challenge'
 import { Route as AppDashboardRouteImport } from './routes/app.dashboard'
 import { Route as AppCoursesRouteImport } from './routes/app.courses'
 import { Route as AppCheatsheetsRouteImport } from './routes/app.cheatsheets'
@@ -98,6 +99,11 @@ const AppGoodiesRoute = AppGoodiesRouteImport.update({
   path: '/goodies',
   getParentRoute: () => AppRoute,
 } as any)
+const AppDsaChallengeRoute = AppDsaChallengeRouteImport.update({
+  id: '/dsa-challenge',
+  path: '/dsa-challenge',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppDashboardRoute = AppDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -126,6 +132,7 @@ export interface FileRoutesByFullPath {
   '/app/cheatsheets': typeof AppCheatsheetsRoute
   '/app/courses': typeof AppCoursesRoute
   '/app/dashboard': typeof AppDashboardRoute
+  '/app/dsa-challenge': typeof AppDsaChallengeRoute
   '/app/goodies': typeof AppGoodiesRoute
   '/app/interview-experiences': typeof AppInterviewExperiencesRoute
   '/app/job-finder': typeof AppJobFinderRoute
@@ -146,6 +153,7 @@ export interface FileRoutesByTo {
   '/app/cheatsheets': typeof AppCheatsheetsRoute
   '/app/courses': typeof AppCoursesRoute
   '/app/dashboard': typeof AppDashboardRoute
+  '/app/dsa-challenge': typeof AppDsaChallengeRoute
   '/app/goodies': typeof AppGoodiesRoute
   '/app/interview-experiences': typeof AppInterviewExperiencesRoute
   '/app/job-finder': typeof AppJobFinderRoute
@@ -167,6 +175,7 @@ export interface FileRoutesById {
   '/app/cheatsheets': typeof AppCheatsheetsRoute
   '/app/courses': typeof AppCoursesRoute
   '/app/dashboard': typeof AppDashboardRoute
+  '/app/dsa-challenge': typeof AppDsaChallengeRoute
   '/app/goodies': typeof AppGoodiesRoute
   '/app/interview-experiences': typeof AppInterviewExperiencesRoute
   '/app/job-finder': typeof AppJobFinderRoute
@@ -189,6 +198,7 @@ export interface FileRouteTypes {
     | '/app/cheatsheets'
     | '/app/courses'
     | '/app/dashboard'
+    | '/app/dsa-challenge'
     | '/app/goodies'
     | '/app/interview-experiences'
     | '/app/job-finder'
@@ -209,6 +219,7 @@ export interface FileRouteTypes {
     | '/app/cheatsheets'
     | '/app/courses'
     | '/app/dashboard'
+    | '/app/dsa-challenge'
     | '/app/goodies'
     | '/app/interview-experiences'
     | '/app/job-finder'
@@ -229,6 +240,7 @@ export interface FileRouteTypes {
     | '/app/cheatsheets'
     | '/app/courses'
     | '/app/dashboard'
+    | '/app/dsa-challenge'
     | '/app/goodies'
     | '/app/interview-experiences'
     | '/app/job-finder'
@@ -348,6 +360,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppGoodiesRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/dsa-challenge': {
+      id: '/app/dsa-challenge'
+      path: '/dsa-challenge'
+      fullPath: '/app/dsa-challenge'
+      preLoaderRoute: typeof AppDsaChallengeRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/dashboard': {
       id: '/app/dashboard'
       path: '/dashboard'
@@ -384,6 +403,7 @@ interface AppRouteChildren {
   AppCheatsheetsRoute: typeof AppCheatsheetsRoute
   AppCoursesRoute: typeof AppCoursesRoute
   AppDashboardRoute: typeof AppDashboardRoute
+  AppDsaChallengeRoute: typeof AppDsaChallengeRoute
   AppGoodiesRoute: typeof AppGoodiesRoute
   AppInterviewExperiencesRoute: typeof AppInterviewExperiencesRoute
   AppJobFinderRoute: typeof AppJobFinderRoute
@@ -403,6 +423,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppCheatsheetsRoute: AppCheatsheetsRoute,
   AppCoursesRoute: AppCoursesRoute,
   AppDashboardRoute: AppDashboardRoute,
+  AppDsaChallengeRoute: AppDsaChallengeRoute,
   AppGoodiesRoute: AppGoodiesRoute,
   AppInterviewExperiencesRoute: AppInterviewExperiencesRoute,
   AppJobFinderRoute: AppJobFinderRoute,
