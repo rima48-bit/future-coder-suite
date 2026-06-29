@@ -16,6 +16,7 @@ import { Route as AppPublishRouteImport } from './routes/app.publish'
 import { Route as AppProfileRouteImport } from './routes/app.profile'
 import { Route as AppPracticeRouteImport } from './routes/app.practice'
 import { Route as AppMyPostsRouteImport } from './routes/app.my-posts'
+import { Route as AppJobFinderRouteImport } from './routes/app.job-finder'
 import { Route as AppInterviewExperiencesRouteImport } from './routes/app.interview-experiences'
 import { Route as AppGoodiesRouteImport } from './routes/app.goodies'
 import { Route as AppDashboardRouteImport } from './routes/app.dashboard'
@@ -58,6 +59,11 @@ const AppMyPostsRoute = AppMyPostsRouteImport.update({
   path: '/my-posts',
   getParentRoute: () => AppRoute,
 } as any)
+const AppJobFinderRoute = AppJobFinderRouteImport.update({
+  id: '/job-finder',
+  path: '/job-finder',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppInterviewExperiencesRoute = AppInterviewExperiencesRouteImport.update({
   id: '/interview-experiences',
   path: '/interview-experiences',
@@ -98,6 +104,7 @@ export interface FileRoutesByFullPath {
   '/app/dashboard': typeof AppDashboardRoute
   '/app/goodies': typeof AppGoodiesRoute
   '/app/interview-experiences': typeof AppInterviewExperiencesRoute
+  '/app/job-finder': typeof AppJobFinderRoute
   '/app/my-posts': typeof AppMyPostsRoute
   '/app/practice': typeof AppPracticeRoute
   '/app/profile': typeof AppProfileRoute
@@ -113,6 +120,7 @@ export interface FileRoutesByTo {
   '/app/dashboard': typeof AppDashboardRoute
   '/app/goodies': typeof AppGoodiesRoute
   '/app/interview-experiences': typeof AppInterviewExperiencesRoute
+  '/app/job-finder': typeof AppJobFinderRoute
   '/app/my-posts': typeof AppMyPostsRoute
   '/app/practice': typeof AppPracticeRoute
   '/app/profile': typeof AppProfileRoute
@@ -129,6 +137,7 @@ export interface FileRoutesById {
   '/app/dashboard': typeof AppDashboardRoute
   '/app/goodies': typeof AppGoodiesRoute
   '/app/interview-experiences': typeof AppInterviewExperiencesRoute
+  '/app/job-finder': typeof AppJobFinderRoute
   '/app/my-posts': typeof AppMyPostsRoute
   '/app/practice': typeof AppPracticeRoute
   '/app/profile': typeof AppProfileRoute
@@ -146,6 +155,7 @@ export interface FileRouteTypes {
     | '/app/dashboard'
     | '/app/goodies'
     | '/app/interview-experiences'
+    | '/app/job-finder'
     | '/app/my-posts'
     | '/app/practice'
     | '/app/profile'
@@ -161,6 +171,7 @@ export interface FileRouteTypes {
     | '/app/dashboard'
     | '/app/goodies'
     | '/app/interview-experiences'
+    | '/app/job-finder'
     | '/app/my-posts'
     | '/app/practice'
     | '/app/profile'
@@ -176,6 +187,7 @@ export interface FileRouteTypes {
     | '/app/dashboard'
     | '/app/goodies'
     | '/app/interview-experiences'
+    | '/app/job-finder'
     | '/app/my-posts'
     | '/app/practice'
     | '/app/profile'
@@ -239,6 +251,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppMyPostsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/job-finder': {
+      id: '/app/job-finder'
+      path: '/job-finder'
+      fullPath: '/app/job-finder'
+      preLoaderRoute: typeof AppJobFinderRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/interview-experiences': {
       id: '/app/interview-experiences'
       path: '/interview-experiences'
@@ -291,6 +310,7 @@ interface AppRouteChildren {
   AppDashboardRoute: typeof AppDashboardRoute
   AppGoodiesRoute: typeof AppGoodiesRoute
   AppInterviewExperiencesRoute: typeof AppInterviewExperiencesRoute
+  AppJobFinderRoute: typeof AppJobFinderRoute
   AppMyPostsRoute: typeof AppMyPostsRoute
   AppPracticeRoute: typeof AppPracticeRoute
   AppProfileRoute: typeof AppProfileRoute
@@ -305,6 +325,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppDashboardRoute: AppDashboardRoute,
   AppGoodiesRoute: AppGoodiesRoute,
   AppInterviewExperiencesRoute: AppInterviewExperiencesRoute,
+  AppJobFinderRoute: AppJobFinderRoute,
   AppMyPostsRoute: AppMyPostsRoute,
   AppPracticeRoute: AppPracticeRoute,
   AppProfileRoute: AppProfileRoute,
