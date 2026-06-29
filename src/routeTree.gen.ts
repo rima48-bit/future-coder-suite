@@ -17,6 +17,7 @@ import { Route as AppMyPostsRouteImport } from './routes/app.my-posts'
 import { Route as AppInterviewExperiencesRouteImport } from './routes/app.interview-experiences'
 import { Route as AppGoodiesRouteImport } from './routes/app.goodies'
 import { Route as AppDashboardRouteImport } from './routes/app.dashboard'
+import { Route as AppCoursesRouteImport } from './routes/app.courses'
 import { Route as AppBookmarksRouteImport } from './routes/app.bookmarks'
 
 const AppRoute = AppRouteImport.update({
@@ -59,6 +60,11 @@ const AppDashboardRoute = AppDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AppRoute,
 } as any)
+const AppCoursesRoute = AppCoursesRouteImport.update({
+  id: '/courses',
+  path: '/courses',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppBookmarksRoute = AppBookmarksRouteImport.update({
   id: '/bookmarks',
   path: '/bookmarks',
@@ -69,6 +75,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/app/bookmarks': typeof AppBookmarksRoute
+  '/app/courses': typeof AppCoursesRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/goodies': typeof AppGoodiesRoute
   '/app/interview-experiences': typeof AppInterviewExperiencesRoute
@@ -80,6 +87,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/app/bookmarks': typeof AppBookmarksRoute
+  '/app/courses': typeof AppCoursesRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/goodies': typeof AppGoodiesRoute
   '/app/interview-experiences': typeof AppInterviewExperiencesRoute
@@ -92,6 +100,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/app/bookmarks': typeof AppBookmarksRoute
+  '/app/courses': typeof AppCoursesRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/goodies': typeof AppGoodiesRoute
   '/app/interview-experiences': typeof AppInterviewExperiencesRoute
@@ -105,6 +114,7 @@ export interface FileRouteTypes {
     | '/'
     | '/app'
     | '/app/bookmarks'
+    | '/app/courses'
     | '/app/dashboard'
     | '/app/goodies'
     | '/app/interview-experiences'
@@ -116,6 +126,7 @@ export interface FileRouteTypes {
     | '/'
     | '/app'
     | '/app/bookmarks'
+    | '/app/courses'
     | '/app/dashboard'
     | '/app/goodies'
     | '/app/interview-experiences'
@@ -127,6 +138,7 @@ export interface FileRouteTypes {
     | '/'
     | '/app'
     | '/app/bookmarks'
+    | '/app/courses'
     | '/app/dashboard'
     | '/app/goodies'
     | '/app/interview-experiences'
@@ -198,6 +210,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppDashboardRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/courses': {
+      id: '/app/courses'
+      path: '/courses'
+      fullPath: '/app/courses'
+      preLoaderRoute: typeof AppCoursesRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/bookmarks': {
       id: '/app/bookmarks'
       path: '/bookmarks'
@@ -210,6 +229,7 @@ declare module '@tanstack/react-router' {
 
 interface AppRouteChildren {
   AppBookmarksRoute: typeof AppBookmarksRoute
+  AppCoursesRoute: typeof AppCoursesRoute
   AppDashboardRoute: typeof AppDashboardRoute
   AppGoodiesRoute: typeof AppGoodiesRoute
   AppInterviewExperiencesRoute: typeof AppInterviewExperiencesRoute
@@ -220,6 +240,7 @@ interface AppRouteChildren {
 
 const AppRouteChildren: AppRouteChildren = {
   AppBookmarksRoute: AppBookmarksRoute,
+  AppCoursesRoute: AppCoursesRoute,
   AppDashboardRoute: AppDashboardRoute,
   AppGoodiesRoute: AppGoodiesRoute,
   AppInterviewExperiencesRoute: AppInterviewExperiencesRoute,
