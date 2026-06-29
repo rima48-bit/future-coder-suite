@@ -13,6 +13,7 @@ import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppProfileRouteImport } from './routes/app.profile'
 import { Route as AppMyPostsRouteImport } from './routes/app.my-posts'
+import { Route as AppInterviewExperiencesRouteImport } from './routes/app.interview-experiences'
 import { Route as AppDashboardRouteImport } from './routes/app.dashboard'
 
 const AppRoute = AppRouteImport.update({
@@ -35,6 +36,11 @@ const AppMyPostsRoute = AppMyPostsRouteImport.update({
   path: '/my-posts',
   getParentRoute: () => AppRoute,
 } as any)
+const AppInterviewExperiencesRoute = AppInterviewExperiencesRouteImport.update({
+  id: '/interview-experiences',
+  path: '/interview-experiences',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppDashboardRoute = AppDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/app/dashboard': typeof AppDashboardRoute
+  '/app/interview-experiences': typeof AppInterviewExperiencesRoute
   '/app/my-posts': typeof AppMyPostsRoute
   '/app/profile': typeof AppProfileRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/app/dashboard': typeof AppDashboardRoute
+  '/app/interview-experiences': typeof AppInterviewExperiencesRoute
   '/app/my-posts': typeof AppMyPostsRoute
   '/app/profile': typeof AppProfileRoute
 }
@@ -60,19 +68,33 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/app/dashboard': typeof AppDashboardRoute
+  '/app/interview-experiences': typeof AppInterviewExperiencesRoute
   '/app/my-posts': typeof AppMyPostsRoute
   '/app/profile': typeof AppProfileRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/app' | '/app/dashboard' | '/app/my-posts' | '/app/profile'
+  fullPaths:
+    | '/'
+    | '/app'
+    | '/app/dashboard'
+    | '/app/interview-experiences'
+    | '/app/my-posts'
+    | '/app/profile'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/app' | '/app/dashboard' | '/app/my-posts' | '/app/profile'
+  to:
+    | '/'
+    | '/app'
+    | '/app/dashboard'
+    | '/app/interview-experiences'
+    | '/app/my-posts'
+    | '/app/profile'
   id:
     | '__root__'
     | '/'
     | '/app'
     | '/app/dashboard'
+    | '/app/interview-experiences'
     | '/app/my-posts'
     | '/app/profile'
   fileRoutesById: FileRoutesById
@@ -112,6 +134,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppMyPostsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/interview-experiences': {
+      id: '/app/interview-experiences'
+      path: '/interview-experiences'
+      fullPath: '/app/interview-experiences'
+      preLoaderRoute: typeof AppInterviewExperiencesRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/dashboard': {
       id: '/app/dashboard'
       path: '/dashboard'
@@ -124,12 +153,14 @@ declare module '@tanstack/react-router' {
 
 interface AppRouteChildren {
   AppDashboardRoute: typeof AppDashboardRoute
+  AppInterviewExperiencesRoute: typeof AppInterviewExperiencesRoute
   AppMyPostsRoute: typeof AppMyPostsRoute
   AppProfileRoute: typeof AppProfileRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
   AppDashboardRoute: AppDashboardRoute,
+  AppInterviewExperiencesRoute: AppInterviewExperiencesRoute,
   AppMyPostsRoute: AppMyPostsRoute,
   AppProfileRoute: AppProfileRoute,
 }
