@@ -16,6 +16,7 @@ import { Route as AppResumeTemplatesRouteImport } from './routes/app.resume-temp
 import { Route as AppPublishRouteImport } from './routes/app.publish'
 import { Route as AppProfileRouteImport } from './routes/app.profile'
 import { Route as AppPracticeRouteImport } from './routes/app.practice'
+import { Route as AppNetworkRouteImport } from './routes/app.network'
 import { Route as AppMyResumesRouteImport } from './routes/app.my-resumes'
 import { Route as AppMyPostsRouteImport } from './routes/app.my-posts'
 import { Route as AppJobTrackerRouteImport } from './routes/app.job-tracker'
@@ -60,6 +61,11 @@ const AppProfileRoute = AppProfileRouteImport.update({
 const AppPracticeRoute = AppPracticeRouteImport.update({
   id: '/practice',
   path: '/practice',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppNetworkRoute = AppNetworkRouteImport.update({
+  id: '/network',
+  path: '/network',
   getParentRoute: () => AppRoute,
 } as any)
 const AppMyResumesRoute = AppMyResumesRouteImport.update({
@@ -126,6 +132,7 @@ export interface FileRoutesByFullPath {
   '/app/job-tracker': typeof AppJobTrackerRoute
   '/app/my-posts': typeof AppMyPostsRoute
   '/app/my-resumes': typeof AppMyResumesRoute
+  '/app/network': typeof AppNetworkRoute
   '/app/practice': typeof AppPracticeRoute
   '/app/profile': typeof AppProfileRoute
   '/app/publish': typeof AppPublishRoute
@@ -145,6 +152,7 @@ export interface FileRoutesByTo {
   '/app/job-tracker': typeof AppJobTrackerRoute
   '/app/my-posts': typeof AppMyPostsRoute
   '/app/my-resumes': typeof AppMyResumesRoute
+  '/app/network': typeof AppNetworkRoute
   '/app/practice': typeof AppPracticeRoute
   '/app/profile': typeof AppProfileRoute
   '/app/publish': typeof AppPublishRoute
@@ -165,6 +173,7 @@ export interface FileRoutesById {
   '/app/job-tracker': typeof AppJobTrackerRoute
   '/app/my-posts': typeof AppMyPostsRoute
   '/app/my-resumes': typeof AppMyResumesRoute
+  '/app/network': typeof AppNetworkRoute
   '/app/practice': typeof AppPracticeRoute
   '/app/profile': typeof AppProfileRoute
   '/app/publish': typeof AppPublishRoute
@@ -186,6 +195,7 @@ export interface FileRouteTypes {
     | '/app/job-tracker'
     | '/app/my-posts'
     | '/app/my-resumes'
+    | '/app/network'
     | '/app/practice'
     | '/app/profile'
     | '/app/publish'
@@ -205,6 +215,7 @@ export interface FileRouteTypes {
     | '/app/job-tracker'
     | '/app/my-posts'
     | '/app/my-resumes'
+    | '/app/network'
     | '/app/practice'
     | '/app/profile'
     | '/app/publish'
@@ -224,6 +235,7 @@ export interface FileRouteTypes {
     | '/app/job-tracker'
     | '/app/my-posts'
     | '/app/my-resumes'
+    | '/app/network'
     | '/app/practice'
     | '/app/profile'
     | '/app/publish'
@@ -285,6 +297,13 @@ declare module '@tanstack/react-router' {
       path: '/practice'
       fullPath: '/app/practice'
       preLoaderRoute: typeof AppPracticeRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/network': {
+      id: '/app/network'
+      path: '/network'
+      fullPath: '/app/network'
+      preLoaderRoute: typeof AppNetworkRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/my-resumes': {
@@ -371,6 +390,7 @@ interface AppRouteChildren {
   AppJobTrackerRoute: typeof AppJobTrackerRoute
   AppMyPostsRoute: typeof AppMyPostsRoute
   AppMyResumesRoute: typeof AppMyResumesRoute
+  AppNetworkRoute: typeof AppNetworkRoute
   AppPracticeRoute: typeof AppPracticeRoute
   AppProfileRoute: typeof AppProfileRoute
   AppPublishRoute: typeof AppPublishRoute
@@ -389,6 +409,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppJobTrackerRoute: AppJobTrackerRoute,
   AppMyPostsRoute: AppMyPostsRoute,
   AppMyResumesRoute: AppMyResumesRoute,
+  AppNetworkRoute: AppNetworkRoute,
   AppPracticeRoute: AppPracticeRoute,
   AppProfileRoute: AppProfileRoute,
   AppPublishRoute: AppPublishRoute,
