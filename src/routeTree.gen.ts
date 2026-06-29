@@ -15,6 +15,7 @@ import { Route as AppProfileRouteImport } from './routes/app.profile'
 import { Route as AppMyPostsRouteImport } from './routes/app.my-posts'
 import { Route as AppInterviewExperiencesRouteImport } from './routes/app.interview-experiences'
 import { Route as AppDashboardRouteImport } from './routes/app.dashboard'
+import { Route as AppBookmarksRouteImport } from './routes/app.bookmarks'
 
 const AppRoute = AppRouteImport.update({
   id: '/app',
@@ -46,10 +47,16 @@ const AppDashboardRoute = AppDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AppRoute,
 } as any)
+const AppBookmarksRoute = AppBookmarksRouteImport.update({
+  id: '/bookmarks',
+  path: '/bookmarks',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/app/bookmarks': typeof AppBookmarksRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/interview-experiences': typeof AppInterviewExperiencesRoute
   '/app/my-posts': typeof AppMyPostsRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/app/bookmarks': typeof AppBookmarksRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/interview-experiences': typeof AppInterviewExperiencesRoute
   '/app/my-posts': typeof AppMyPostsRoute
@@ -67,6 +75,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/app/bookmarks': typeof AppBookmarksRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/interview-experiences': typeof AppInterviewExperiencesRoute
   '/app/my-posts': typeof AppMyPostsRoute
@@ -77,6 +86,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/app'
+    | '/app/bookmarks'
     | '/app/dashboard'
     | '/app/interview-experiences'
     | '/app/my-posts'
@@ -85,6 +95,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/app'
+    | '/app/bookmarks'
     | '/app/dashboard'
     | '/app/interview-experiences'
     | '/app/my-posts'
@@ -93,6 +104,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/app'
+    | '/app/bookmarks'
     | '/app/dashboard'
     | '/app/interview-experiences'
     | '/app/my-posts'
@@ -148,10 +160,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppDashboardRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/bookmarks': {
+      id: '/app/bookmarks'
+      path: '/bookmarks'
+      fullPath: '/app/bookmarks'
+      preLoaderRoute: typeof AppBookmarksRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
 interface AppRouteChildren {
+  AppBookmarksRoute: typeof AppBookmarksRoute
   AppDashboardRoute: typeof AppDashboardRoute
   AppInterviewExperiencesRoute: typeof AppInterviewExperiencesRoute
   AppMyPostsRoute: typeof AppMyPostsRoute
@@ -159,6 +179,7 @@ interface AppRouteChildren {
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppBookmarksRoute: AppBookmarksRoute,
   AppDashboardRoute: AppDashboardRoute,
   AppInterviewExperiencesRoute: AppInterviewExperiencesRoute,
   AppMyPostsRoute: AppMyPostsRoute,
