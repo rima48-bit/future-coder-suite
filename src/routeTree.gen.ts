@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppSandboxRouteImport } from './routes/app.sandbox'
+import { Route as AppResumeTemplatesRouteImport } from './routes/app.resume-templates'
 import { Route as AppPublishRouteImport } from './routes/app.publish'
 import { Route as AppProfileRouteImport } from './routes/app.profile'
 import { Route as AppPracticeRouteImport } from './routes/app.practice'
@@ -38,6 +39,11 @@ const IndexRoute = IndexRouteImport.update({
 const AppSandboxRoute = AppSandboxRouteImport.update({
   id: '/sandbox',
   path: '/sandbox',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppResumeTemplatesRoute = AppResumeTemplatesRouteImport.update({
+  id: '/resume-templates',
+  path: '/resume-templates',
   getParentRoute: () => AppRoute,
 } as any)
 const AppPublishRoute = AppPublishRouteImport.update({
@@ -116,6 +122,7 @@ export interface FileRoutesByFullPath {
   '/app/practice': typeof AppPracticeRoute
   '/app/profile': typeof AppProfileRoute
   '/app/publish': typeof AppPublishRoute
+  '/app/resume-templates': typeof AppResumeTemplatesRoute
   '/app/sandbox': typeof AppSandboxRoute
 }
 export interface FileRoutesByTo {
@@ -133,6 +140,7 @@ export interface FileRoutesByTo {
   '/app/practice': typeof AppPracticeRoute
   '/app/profile': typeof AppProfileRoute
   '/app/publish': typeof AppPublishRoute
+  '/app/resume-templates': typeof AppResumeTemplatesRoute
   '/app/sandbox': typeof AppSandboxRoute
 }
 export interface FileRoutesById {
@@ -151,6 +159,7 @@ export interface FileRoutesById {
   '/app/practice': typeof AppPracticeRoute
   '/app/profile': typeof AppProfileRoute
   '/app/publish': typeof AppPublishRoute
+  '/app/resume-templates': typeof AppResumeTemplatesRoute
   '/app/sandbox': typeof AppSandboxRoute
 }
 export interface FileRouteTypes {
@@ -170,6 +179,7 @@ export interface FileRouteTypes {
     | '/app/practice'
     | '/app/profile'
     | '/app/publish'
+    | '/app/resume-templates'
     | '/app/sandbox'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -187,6 +197,7 @@ export interface FileRouteTypes {
     | '/app/practice'
     | '/app/profile'
     | '/app/publish'
+    | '/app/resume-templates'
     | '/app/sandbox'
   id:
     | '__root__'
@@ -204,6 +215,7 @@ export interface FileRouteTypes {
     | '/app/practice'
     | '/app/profile'
     | '/app/publish'
+    | '/app/resume-templates'
     | '/app/sandbox'
   fileRoutesById: FileRoutesById
 }
@@ -233,6 +245,13 @@ declare module '@tanstack/react-router' {
       path: '/sandbox'
       fullPath: '/app/sandbox'
       preLoaderRoute: typeof AppSandboxRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/resume-templates': {
+      id: '/app/resume-templates'
+      path: '/resume-templates'
+      fullPath: '/app/resume-templates'
+      preLoaderRoute: typeof AppResumeTemplatesRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/publish': {
@@ -335,6 +354,7 @@ interface AppRouteChildren {
   AppPracticeRoute: typeof AppPracticeRoute
   AppProfileRoute: typeof AppProfileRoute
   AppPublishRoute: typeof AppPublishRoute
+  AppResumeTemplatesRoute: typeof AppResumeTemplatesRoute
   AppSandboxRoute: typeof AppSandboxRoute
 }
 
@@ -351,6 +371,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppPracticeRoute: AppPracticeRoute,
   AppProfileRoute: AppProfileRoute,
   AppPublishRoute: AppPublishRoute,
+  AppResumeTemplatesRoute: AppResumeTemplatesRoute,
   AppSandboxRoute: AppSandboxRoute,
 }
 
