@@ -59,6 +59,29 @@ This redesign focuses on:
 
 ---
 
+## Detailed Comparison & Alignment Review
+
+### 1. UI Design & Color Consistency
+
+The original design used too many accent colors, which made the interface feel visually inconsistent. I simplified the color system by using a dark background with a single emerald-teal accent throughout the website. Cards now follow the same clean style with subtle borders and light glassmorphism, creating a more polished and cohesive experience.
+
+### 2. Navigation & Information Architecture
+
+The previous navigation contained many top-level items, making it difficult for users to quickly find what they were looking for. I reorganized the menu into five primary categories—Learn, AI Tools, Explore, Community, and Jobs—with dropdowns for related resources. This keeps the header cleaner while still providing easy access to all sections.
+
+### 3. Hero Section & User Focus
+
+The original hero section contained multiple competing elements that distracted users from the main message. I redesigned it with a single, focused value proposition and clear primary actions. Social media links were moved to the footer so the hero remains clean and encourages users to take the intended actions.
+
+### 4. Typography & Visual Hierarchy
+
+To improve readability and consistency, I standardized the typography across the website. Space Grotesk is used for headings, while Inter is used for body text. I also adjusted spacing and line heights to make the content easier to read across different screen sizes.
+
+### 5. Performance & User Experience
+
+The previous experience relied on client-side pages that often displayed loading spinners before content appeared. By simplifying the structure into a streamlined landing page, the experience feels faster, reduces unnecessary loading states, and provides users with immediate access to the main content.
+
+
 ## 👨‍💻 Author
 
 Built for the **Vibe Coding Challenge 🚨**  
